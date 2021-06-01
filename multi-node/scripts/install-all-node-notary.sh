@@ -78,7 +78,8 @@ git clone https://github.com/mosbuma/drx-fed4fire.git /drx-fed4fire
 cd /drx-fed4fire
 git lfs pull
 cd multi-node/install
-mkdir CopyrightDeltaNotary/logs/
+mkdir CopyrightDeltaNotary/logs
+mkdir CopyrightDeltaNotary/drivers
 printf "set permissions for docker node\n" >> /install-all-log.txt
 chmod -R o+rw CopyrightDeltaNotary
 cd CopyrightDeltaNotary
