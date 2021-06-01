@@ -1,0 +1,77 @@
+version: '3'
+services:
+  copyright-delta-notary:
+    volumes:
+    - ./CopyrightDeltaNotary/node.conf:/etc/corda/node.conf
+    - ./CopyrightDeltaNotary/certificates:/opt/corda/certificates
+    - ./CopyrightDeltaNotary/logs:/opt/corda/logs
+    - ./CopyrightDeltaNotary/persistence:/opt/corda/persistence
+    - ./CopyrightDeltaNotary/cordapps:/opt/corda/cordapps
+    - ./CopyrightDeltaNotary/network-parameters:/opt/corda/network-parameters
+    - ./CopyrightDeltaNotary/additional-node-infos:/opt/corda/additional-node-infos
+    - ./CopyrightDeltaNotary/drivers:/opt/corda/drivers
+    environment:
+    - ACCEPT_LICENSE=${ACCEPT_LICENSE}
+    ports:
+    - 10003
+    - "2222:2222"
+    image: corda/corda-zulu-java1.8-4.7:latest
+  copyright-delta-a:
+    volumes:
+    - ./CopyrightDeltaA/node.conf:/etc/corda/node.conf
+    - ./CopyrightDeltaA/certificates:/opt/corda/certificates
+    - ./CopyrightDeltaA/logs:/opt/corda/logs
+    - ./CopyrightDeltaA/persistence:/opt/corda/persistence
+    - ./CopyrightDeltaA/cordapps:/opt/corda/cordapps
+    - ./CopyrightDeltaA/network-parameters:/opt/corda/network-parameters
+    - ./CopyrightDeltaA/additional-node-infos:/opt/corda/additional-node-infos
+    - ./CopyrightDeltaA/drivers:/opt/corda/drivers
+    environment:
+    - ACCEPT_LICENSE=${ACCEPT_LICENSE}
+    ports:
+    - 10006
+    - "2223:2223"
+    image: corda/corda-zulu-java1.8-4.7:latest
+  copyright-delta-b:
+    volumes:
+    - ./CopyrightDeltaB/node.conf:/etc/corda/node.conf
+    - ./CopyrightDeltaB/certificates:/opt/corda/certificates
+    - ./CopyrightDeltaB/logs:/opt/corda/logs
+    - ./CopyrightDeltaB/persistence:/opt/corda/persistence
+    - ./CopyrightDeltaB/cordapps:/opt/corda/cordapps
+    - ./CopyrightDeltaB/network-parameters:/opt/corda/network-parameters
+    - ./CopyrightDeltaB/additional-node-infos:/opt/corda/additional-node-infos
+    - ./CopyrightDeltaB/drivers:/opt/corda/drivers
+    environment:
+    - ACCEPT_LICENSE=${ACCEPT_LICENSE}
+    ports:
+    - 10009
+    - "2224:2224"
+    image: corda/corda-zulu-java1.8-4.7:latest
+  exchange-backend-api:
+    volumes:
+    - ./exchange-backend:/etc/exchange-backend
+    container_name: exchange-backend-api
+    image: openjdk:8
+    ports:
+    - "8080:8080"
+    - "10006:10006"
+    - "10009:10009"
+    depends_on:
+    - "copyright-delta-notary"
+    - "copyright-delta-a"
+    - "copyright-delta-b"
+    command: ["/etc/exchange-backend/wait-for-nodes.sh"]
+  exchange-frontend:
+    container_name: exchange-frontend
+    build:
+      context: ./exchange-frontend
+      dockerfile: Dockerfile
+    ports:
+    # external:internal
+    - ":::80:80"
+    environment:
+    - "REACT_APP_ENV_NAME=production"
+    depends_on:
+    - "exchange-backend-api"
+    

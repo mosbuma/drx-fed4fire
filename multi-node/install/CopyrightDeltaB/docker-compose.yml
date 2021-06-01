@@ -1,0 +1,19 @@
+version: '3'
+services:
+  copyright-delta-b:
+    volumes:
+    - ./node.conf:/etc/corda/node.conf
+    - ./certificates:/opt/corda/certificates
+    - ./logs:/opt/corda/logs
+    - ./persistence:/opt/corda/persistence
+    - ./cordapps:/opt/corda/cordapps
+    - ./network-parameters:/opt/corda/network-parameters
+    - ./additional-node-infos:/opt/corda/additional-node-infos
+    - ./drivers:/opt/corda/drivers
+    environment:
+    - ACCEPT_LICENSE=${ACCEPT_LICENSE}
+    ports:
+    - 10001
+    - "2222:2222"
+    image: corda/corda-zulu-java1.8-4.7:latest
+    

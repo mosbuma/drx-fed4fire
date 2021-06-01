@@ -1,0 +1,22 @@
+version: '3'
+services:
+  exchange-backend-api:
+    volumes:
+    - ./exchange-backend:/etc/exchange-backend
+    container_name: exchange-backend-api
+    image: openjdk:8
+    ports:
+    - "8080:8080"
+    command: ["/etc/exchange-backend/wait-for-nodes.sh"]
+  exchange-frontend:
+    container_name: exchange-frontend
+    build:
+      context: ./exchange-frontend
+      dockerfile: Dockerfile
+    ports:
+    # external:internal
+    - ":::80:80"
+    environment:
+    - "REACT_APP_ENV_NAME=production"
+    depends_on:
+    - "exchange-backend-api"
