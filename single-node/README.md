@@ -5,7 +5,7 @@ create node
 - enable internet with script line
     wget -O - -nv --ciphers DEFAULT@SECLEVEL=1 https://www.wall2.ilabt.iminds.be/enable-nat.sh | sudo bash && touch /tmp/internet-enabled
 - install docker/docker-compose with
-    wget -O - -nv https://raw.githubusercontent.com/copyrightdelta/drx-fed4fire/master/scripts/install.sh | sudo bash && touch /tmp/docker-installed
+    wget -O - -nv https://raw.githubusercontent.com/mosbuma/drx-fed4fire/master/scripts/install.sh | sudo bash && touch /tmp/docker-installed
     
     
   -> JFed scripts
@@ -18,7 +18,7 @@ create node
       </sliver_type>
       <services>
         <execute shell="sh" command="wget -O - -nv --ciphers DEFAULT@SECLEVEL=1 https://www.wall2.ilabt.iminds.be/enable-nat.sh | sudo bash &amp;&amp; touch /tmp/internet-enabled" jfed:finished_flag="/tmp/internet-enabled"/>
-        <execute shell="sh" command="wget -O - -nv https://raw.githubusercontent.com/copyrightdelta/drx-fed4fire/master/scripts/install.sh | sudo bash &amp;&amp; touch /tmp/docker-installed" jfed:finished_flag="/tmp/internet-enabled"/>
+        <execute shell="sh" command="wget -O - -nv https://raw.githubusercontent.com/mosbuma/drx-fed4fire/master/scripts/install.sh | sudo bash &amp;&amp; touch /tmp/docker-installed" jfed:finished_flag="/tmp/internet-enabled"/>
       </services>
       <location xmlns="http://jfed.iminds.be/rspec/ext/jfed/1" x="382.0" y="103.5"/>
     </node>
