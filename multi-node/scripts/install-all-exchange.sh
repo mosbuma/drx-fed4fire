@@ -70,8 +70,10 @@ printf "install drx-fed4fire\n" >> /install-all-log.txt
 apt-get install git-lfs -y
 git clone https://github.com/mosbuma/drx-fed4fire.git /drx-fed4fire
 git lfs pull
+mkdir -p /drx-fed4fire/multi-node/install/exchange/exchange-backend
+chmod -R o+rw /drx-fed4fire/multi-node/install/exchange/exchange-backend
 mv /drx-fed4fire/install-shared/exchange-backend/clients-0.1.jar /drx-fed4fire/multi-node/install/exchange/exchange-backend/
-cd /drx-fed4fire/multi-node/install
+cd /drx-fed4fire/multi-node/install/exchange/
 
 docker-compose up -d
 
