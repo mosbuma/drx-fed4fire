@@ -1,6 +1,8 @@
 #source for docker install script:
 # https://gist.github.com/EvgenyOrekhov/1ed8a4466efd0a59d73a11d753c0167b
 
+printf "installing node A\n" > /install-all-log.txt
+
 set -o errexit
 set -o nounset
 
@@ -10,16 +12,8 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-printf "starting docker install script\n" > /install-all-log.txt
-
-printf "sleeping for a while to allow internet to get enabled first\n" >> /install-all-log.txt
-
-sleep 15
-
-printf "awake again\n" >> /install-all-log.txt
-
-printf "test internet ping\n" >> /install-all-log.txt
-echo ping -c 1 nu.nl >> /install-all-log.txt
+printf "waiting for internet to get enabled\n" >> /install-all-log.txt
+while [ ! -f /tmp/internet-enabled ]; do sleep 1; done
 
 if [ -x "$(command -v docker)" ]; then
   printf "remove existing docker installation\n" >> /install-all-log.txt
