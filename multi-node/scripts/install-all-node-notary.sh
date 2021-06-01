@@ -75,8 +75,9 @@ printf "docker-compose install script done\n" >> /install-all-log.txt
 printf "install drx-fed4fire\n" >> /install-all-log.txt
 apt-get install git-lfs -y
 git clone https://github.com/mosbuma/drx-fed4fire.git /drx-fed4fire
+cd /drx-fed4fire
 git lfs pull
-cd /drx-fed4fire/multi-node/install
+cd multi-node/install
 printf "set permissions for docker node\n" >> /install-all-log.txt
 chmod -R o+rw CopyrightDeltaNotary
 cd CopyrightDeltaNotary
