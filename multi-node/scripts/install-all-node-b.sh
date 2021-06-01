@@ -85,4 +85,8 @@ cd CopyrightDeltaB
 docker-compose up -d
 
 printf "install drx-fed4fire done\n" >> /install-all-log.txt
+
+#set ready flag for jfed
+touch /tmp/all-installed
+
 cat /install-all-log.txt

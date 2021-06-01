@@ -78,6 +78,7 @@ git clone https://github.com/mosbuma/drx-fed4fire.git /drx-fed4fire
 cd /drx-fed4fire
 git lfs pull
 cd multi-node/install
+mkdir CopyrightDeltaNotary/logs/
 printf "set permissions for docker node\n" >> /install-all-log.txt
 chmod -R o+rw CopyrightDeltaA
 cd CopyrightDeltaA
@@ -85,4 +86,8 @@ cd CopyrightDeltaA
 docker-compose up -d
 
 printf "install drx-fed4fire done\n" >> /install-all-log.txt
+
+#set ready flag for jfed
+touch /tmp/all-installed
+
 cat /install-all-log.txt
