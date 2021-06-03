@@ -13,9 +13,10 @@ services:
     build:
       context: ./exchange-frontend
       dockerfile: Dockerfile
-    ports:
+      network: host
+    #ports:
     # external:internal
-    - ":::80:80"
+    #- ":::80:80"
     environment:
     - "REACT_APP_ENV_NAME=production"
     depends_on:
