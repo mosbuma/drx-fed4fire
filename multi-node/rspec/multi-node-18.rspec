@@ -1,5 +1,5 @@
 <?xml version='1.0'?>
-<rspec xmlns="http://www.geni.net/resources/rspec/3" type="request" generated_by="jFed RSpec Editor" generated="2021-05-31T16:21:17.637+02:00" xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" xmlns:delay="http://www.protogeni.net/resources/rspec/ext/delay/1" xmlns:jfed-command="http://jfed.iminds.be/rspec/ext/jfed-command/1" xmlns:client="http://www.protogeni.net/resources/rspec/ext/client/1" xmlns:jfed-ssh-keys="http://jfed.iminds.be/rspec/ext/jfed-ssh-keys/1" xmlns:jfed="http://jfed.iminds.be/rspec/ext/jfed/1" xmlns:sharedvlan="http://www.protogeni.net/resources/rspec/ext/shared-vlan/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geni.net/resources/rspec/3 http://www.geni.net/resources/rspec/3/request.xsd ">
+<rspec xmlns="http://www.geni.net/resources/rspec/3" type="request" generated_by="jFed RSpec Editor" generated="2021-06-03T11:29:32.022+02:00" xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" xmlns:delay="http://www.protogeni.net/resources/rspec/ext/delay/1" xmlns:jfed-command="http://jfed.iminds.be/rspec/ext/jfed-command/1" xmlns:client="http://www.protogeni.net/resources/rspec/ext/client/1" xmlns:jfed-ssh-keys="http://jfed.iminds.be/rspec/ext/jfed-ssh-keys/1" xmlns:jfed="http://jfed.iminds.be/rspec/ext/jfed/1" xmlns:sharedvlan="http://www.protogeni.net/resources/rspec/ext/shared-vlan/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geni.net/resources/rspec/3 http://www.geni.net/resources/rspec/3/request.xsd ">
   <node client_id="cpdNotary" exclusive="true" component_manager_id="urn:publicid:IDN+wall1.ilabt.iminds.be+authority+cm">
     <sliver_type name="raw-pc">
       <disk_image name="urn:publicid:IDN+wall1.ilabt.iminds.be+image+emulab-ops:UBUNTU18-64-STD"/>
@@ -36,9 +36,11 @@
     </services>
     <location xmlns="http://jfed.iminds.be/rspec/ext/jfed/1" x="89.0" y="122.0"/>
     <interface client_id="cpdNodeB:if1">
-      <ip address="192.168.3.4" netmask="255.255.255.0" type="ipv4"/>
+      <ip address="192.168.3.3" netmask="255.255.255.0" type="ipv4"/>
     </interface>
   </node>
+  
+  
   <node client_id="exchange" exclusive="true" component_manager_id="urn:publicid:IDN+wall1.ilabt.iminds.be+authority+cm">
     <sliver_type name="raw-pc">
       <disk_image name="urn:publicid:IDN+wall1.ilabt.iminds.be+image+emulab-ops:UBUNTU18-64-STD"/>
@@ -47,9 +49,9 @@
       <execute shell="sh" command="wget -O - -nv https://www.wall2.ilabt.iminds.be/enable-nat.sh | sudo bash &amp;&amp; touch /tmp/internet-enabled" jfed:finished_flag="/tmp/internet-enabled"/>
       <execute shell="sh" command="wget -O - -nv https://raw.githubusercontent.com/mosbuma/drx-fed4fire/master/multi-node/scripts/install-all-exchange.sh | sudo bash" jfed:finished_flag="/tmp/all-installed"/>
     </services>
-    <location xmlns="http://jfed.iminds.be/rspec/ext/jfed/1" x="433.0" y="298.5"/>
+    <location xmlns="http://jfed.iminds.be/rspec/ext/jfed/1" x="316.0" y="269.5"/>
     <interface client_id="exchange:if1">
-      <ip address="192.168.3.3" netmask="255.255.255.0" type="ipv4"/>
+      <ip address="192.168.3.4" netmask="255.255.255.0" type="ipv4"/>
     </interface>
   </node>
   <link client_id="cordanet">
