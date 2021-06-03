@@ -1,5 +1,5 @@
-#source for docker install script:
-# https://gist.github.com/EvgenyOrekhov/1ed8a4466efd0a59d73a11d753c0167b
+#!/bin/bash
+
 set -o errexit
 set -o nounset
 
@@ -22,6 +22,8 @@ if [ -x "$(command -v docker)" ]; then
   sudo apt remove --yes docker-ce docker-ce-cli containerd.io
 fi
 
+#source for docker install script:
+# https://gist.github.com/EvgenyOrekhov/1ed8a4466efd0a59d73a11d753c0167b
 printf "install docker\n" >> $LOGFILE
 sudo apt update
 sudo apt --yes --no-install-recommends install apt-transport-https ca-certificates software-properties-common
