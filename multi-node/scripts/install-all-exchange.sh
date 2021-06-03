@@ -22,7 +22,8 @@ fi
 
 printf "install docker\n" >> /install-all-log.txt
 sudo apt update
-sudo apt --yes --no-install-recommends install apt-transport-https ca-certificates
+sudo apt-get install
+sudo apt --yes --no-install-recommends install apt-transport-https ca-certificates software-properties-common software-properties-common
 wget --quiet --output-document=- https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/ubuntu $(lsb_release --codename --short) stable"
 sudo apt update
@@ -67,14 +68,20 @@ fi
 printf "docker-compose install script done\n" >> /install-all-log.txt
 
 printf "install drx-fed4fire\n" >> /install-all-log.txt
+printf "* install git-lfs\n" >> /install-all-log.txt
 apt-get install git-lfs -y
+printf "* clone repository\n" >> /install-all-log.txt
 git clone https://github.com/mosbuma/drx-fed4fire.git /drx-fed4fire
+cd /drx-fed4fire/
+printf "* pull from git lfs\n" >> /install-all-log.txt
 git lfs pull
 mkdir -p /drx-fed4fire/multi-node/install/exchange/exchange-backend
 chmod -R o+rw /drx-fed4fire/multi-node/install/exchange/exchange-backend
+printf "* move jar file\n" >> /install-all-log.txt
 mv /drx-fed4fire/install-shared/exchange-backend/clients-0.1.jar /drx-fed4fire/multi-node/install/exchange/exchange-backend/
 cd /drx-fed4fire/multi-node/install/exchange/
 
+printf "* execute docker-compose up\n" >> /install-all-log.txt
 docker-compose up -d
 
 printf "install drx-fed4fire done\n" >> /install-all-log.txt

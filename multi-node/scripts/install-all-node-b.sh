@@ -22,7 +22,7 @@ fi
 
 printf "install docker\n" >> /install-all-log.txt
 sudo apt update
-sudo apt --yes --no-install-recommends install apt-transport-https ca-certificates
+sudo apt --yes --no-install-recommends install apt-transport-https ca-certificates software-properties-common
 wget --quiet --output-document=- https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/ubuntu $(lsb_release --codename --short) stable"
 sudo apt update
