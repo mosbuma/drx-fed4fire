@@ -67,10 +67,16 @@ fi
 printf "docker-compose install script done\n" >> /install-all-log.txt
 
 printf "install drx-fed4fire\n" >> /install-all-log.txt
+printf "* install git-lfs\n" >> /install-all-log.txt
 apt-get install git-lfs -y
+printf "* clone repository\n" >> /install-all-log.txt
 git clone https://github.com/mosbuma/drx-fed4fire.git /drx-fed4fire
 cd /drx-fed4fire
+printf "* pull from git lfs\n" >> /install-all-log.txt
 git lfs pull
+printf "* move docker-compose file\n" >> /install-all-log.txt
+mv /drx-fed4fire/multi-node/install/dockerfiles/docker-compose-node-notary.yml /drx-fed4fire/multi-node/install/CopyrightDeltaNotary/docker-compose.yml
+
 cd multi-node/install
 mkdir CopyrightDeltaNotary/logs
 mkdir CopyrightDeltaNotary/drivers
@@ -78,6 +84,7 @@ printf "set permissions for docker node\n" >> /install-all-log.txt
 chmod -R o+rw CopyrightDeltaNotary
 cd CopyrightDeltaNotary
 
+printf "* execute docker-compose up\n" >> /install-all-log.txt
 docker-compose up -d
 
 printf "install drx-fed4fire done\n" >> /install-all-log.txt
