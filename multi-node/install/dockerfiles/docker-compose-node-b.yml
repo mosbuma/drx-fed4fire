@@ -13,8 +13,10 @@ services:
     environment:
     - ACCEPT_LICENSE=${ACCEPT_LICENSE}
     ports:
-    - "10000:10008"
-    - "10001:10009"
-    - "2222:2222"
+    # - "10000:10008"
+    # - "10001:10009"
+    # - "2222:2222"
     image: corda/corda-zulu-java1.8-4.7:latest
+    build:
+    network_mode: host
     
