@@ -74,12 +74,17 @@ git clone https://github.com/mosbuma/drx-fed4fire.git /drx-fed4fire
 cd /drx-fed4fire
 printf "* pull from git lfs\n" >> /install-all-log.txt
 git lfs pull
-printf "* move docker-compose file\n" >> /install-all-log.txt
-mv /drx-fed4fire/multi-node/install/dockerfiles/docker-compose-node-notary.yml /drx-fed4fire/multi-node/install/CopyrightDeltaNotary/docker-compose.yml
 
 cd multi-node/install
-mkdir CopyrightDeltaNotary/logs
-mkdir CopyrightDeltaNotary/drivers
+
+printf "* move docker-compose file\n" >> /install-all-log.txt
+mv dockerfiles/docker-compose-node-notary.yml CopyrightDeltaNotary/docker-compose.yml
+
+mkdir -p CopyrightDeltaNotary/logs
+mkdir -p CopyrightDeltaNotary/drivers
+mkdir -p CopyrightDeltaNotary/persistence
+mv CopyrightDeltaNotary/persistence*.db CopyrightDeltaNotary/persistence/
+
 printf "set permissions for docker node\n" >> /install-all-log.txt
 chmod -R o+rw CopyrightDeltaNotary
 cd CopyrightDeltaNotary

@@ -1,7 +1,7 @@
 #source for docker install script:
 # https://gist.github.com/EvgenyOrekhov/1ed8a4466efd0a59d73a11d753c0167b
 
-printf "installing node A\n" > /install-all-log.txt
+printf "installing node B\n" > /install-all-log.txt
 
 set -o errexit
 set -o nounset
@@ -74,12 +74,16 @@ git clone https://github.com/mosbuma/drx-fed4fire.git /drx-fed4fire
 cd /drx-fed4fire
 printf "* pull from git lfs\n" >> /install-all-log.txt
 git lfs pull
-printf "* move docker-compose file\n" >> /install-all-log.txt
-mv /drx-fed4fire/multi-node/install/dockerfiles/docker-compose-node-b.yml /drx-fed4fire/multi-node/install/CopyrightDeltaB/docker-compose.yml
 
 cd multi-node/install
-mkdir CopyrightDeltaNotary/logs
-mkdir CopyrightDeltaNotary/drivers
+printf "* move docker-compose file\n" >> /install-all-log.txt
+mv dockerfiles/docker-compose-node-b.yml CopyrightDeltaB/docker-compose.yml
+
+mkdir -p CopyrightDeltaB/logs
+mkdir -p CopyrightDeltaB/drivers
+mkdir -p CopyrightDeltaB/persistence
+mv CopyrightDeltaB/persistence*.db CopyrightDeltaB/persistence/
+
 printf "set permissions for docker node\n" >> /install-all-log.txt
 chmod -R o+rw CopyrightDeltaB
 cd CopyrightDeltaB
