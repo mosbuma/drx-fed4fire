@@ -1,2 +1,2 @@
 #!/bin/bash
-source ./install-all-node CopyrightDeltaNotary
+source ./install-all-node.sh CopyrightDeltaNotary

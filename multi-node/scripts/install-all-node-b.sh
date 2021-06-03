@@ -1,2 +1,2 @@
 #!/bin/bash
-source ./install-all-node CopyrightDeltaB
+source ./install-all-node.sh CopyrightDeltaB
