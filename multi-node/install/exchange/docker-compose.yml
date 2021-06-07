@@ -13,11 +13,8 @@ services:
     build:
       context: ./exchange-frontend
       dockerfile: Dockerfile
-      network: host
-    #ports:
-    # external:internal
-    #- ":::80:80"
+    network_mode: host
     environment:
-    - "REACT_APP_ENV_NAME=production"
+    - "REACT_APP_ENV_NAME=jfedmulti"
     depends_on:
     - "exchange-backend-api"
