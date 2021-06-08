@@ -90,6 +90,9 @@ setup_corda_node() {
 
 cd single-node/install
 
+printf "* move frontend files\n" >> /install-all-log.txt
+mv /drx-fed4fire/install-shared/exchange-frontend /drx-fed4fire/single-node/install/
+
 printf "* move jar file\n" >> /install-all-log.txt
 mv /drx-fed4fire/install-shared/exchange-backend/clients-0.1.jar /drx-fed4fire/single-node/install/exchange-backend/
 cd /drx-fed4fire/single-node/install/

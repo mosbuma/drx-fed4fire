@@ -75,11 +75,16 @@ git clone https://github.com/mosbuma/drx-fed4fire.git /drx-fed4fire
 cd /drx-fed4fire/
 printf "* pull from git lfs\n" >> /install-all-log.txt
 git lfs pull
+
+printf "* move frontend files\n" >> /install-all-log.txt
+mv /drx-fed4fire/install-shared/exchange-frontend /drx-fed4fire/multi-node/install/exchange/
+
 mkdir -p /drx-fed4fire/multi-node/install/exchange/exchange-backend
 chmod -R o+rw /drx-fed4fire/multi-node/install/exchange/exchange-backend
 printf "* move jar file\n" >> /install-all-log.txt
 mv /drx-fed4fire/install-shared/exchange-backend/clients-0.1.jar /drx-fed4fire/multi-node/install/exchange/exchange-backend/
 cd /drx-fed4fire/multi-node/install/exchange/
+
 
 printf "* execute docker-compose up\n" >> /install-all-log.txt
 docker-compose up -d
