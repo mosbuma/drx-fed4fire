@@ -4,11 +4,11 @@
 set -o errexit
 set -o nounset
 
-printf "starting docker-compose install script\n\n" >> /install-docker-compose-log.txt
+printf "starting docker-compose install script\n" >> $LOGFILE
 
 if [[ $EUID -ne 0 ]]; then
-    echo "{ \"failed\": true, \"msg\": \"This script should be run using sudo or as the root user\" }" > /install-docker-compose-log.txt
-    cat /install-docker-compose-log.txt
+    echo "{ \"failed\": true, \"msg\": \"This script should be run using sudo or as the root user\" }" > $LOGFILE
+    cat $LOGFILE
     exit 1
 fi
 
@@ -19,12 +19,12 @@ compose_release() {
 }
 
 if ! [ -x "$(command -v docker-compose)" ]; then
-  printf "install docker compose\n\n" > /install-docker-compose-log.txt
+  printf "install docker compose\n" >> $LOGFILE
   curl -L https://github.com/docker/compose/releases/download/$(compose_release)/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose
-  printf '\nDocker Compose installed successfully\n\n' > /install-docker-compose-log.txt
+  printf '\nDocker Compose installed successfully\n' >> $LOGFILE
 else
-  printf "skip install docker compose - already installed\n\n" >> /install-docker-compose-log.txt
+  printf "skip install docker compose - already installed\n" >> $LOGFILE
 fi
 
-printf "docker-compose install script done\n\n" >> /install-docker-compose-log.txt
-cat /install-docker-compose-log.txt
+printf "docker-compose install script done\n" >> $LOGFILE
+cat $LOGFILE
