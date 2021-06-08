@@ -3,8 +3,8 @@
 set -o errexit
 set -o nounset
 
-NODENAME=$1
-LOGFILE=/install-$1.txt
+NODENAME=singlenode
+LOGFILE=/install-$NODENAME.txt
 
 printf "installing node $NODENAME\n" > $LOGFILE
 
@@ -99,7 +99,7 @@ cd /drx-fed4fire/single-node/install/
 
 setup_corda_node CopyrightDeltaA
 setup_corda_node CopyrightDeltaB
-setup_corda_node CopyrightDeltaC
+setup_corda_node CopyrightDeltaNotary
 
 printf "* execute docker-compose up\n" >> $LOGFILE
 docker-compose up -d
