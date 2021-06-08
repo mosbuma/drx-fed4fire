@@ -6,7 +6,7 @@
     </sliver_type>
     <services>
       <execute shell="sh" command="wget -O - -nv --ciphers DEFAULT@SECLEVEL=1 https://www.wall2.ilabt.iminds.be/enable-nat.sh | sudo bash &amp;&amp; touch /tmp/internet-enabled" jfed:finished_flag="/tmp/internet-enabled"/>
-      <execute shell="sh" command="wget -O - -nv https://raw.githubusercontent.com/mosbuma/drx-fed4fire/master/single-node/scripts/install-all.sh | sudo bash" jfed:finished_flag="/tmp/docker-installed"/>
+      <execute shell="sh" command="wget -O - -nv https://raw.githubusercontent.com/mosbuma/drx-fed4fire/master/single-node/scripts/install-all.sh | sudo bash" jfed:finished_flag="/tmp/all-installed"/>
     </services>
     <location xmlns="http://jfed.iminds.be/rspec/ext/jfed/1" x="382.0" y="103.5"/>
   </node>
