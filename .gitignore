@@ -1,1 +1,15 @@
-logs
+single-node/install/CopyrightDeltaA/drivers
+single-node/install/CopyrightDeltaA/logs
+single-node/install/CopyrightDeltaA/nodeinfo*.
+multi-node/install/CopyrightDeltaA/drivers
+multi-node/install/CopyrightDeltaA/logs
+multi-node/install/CopyrightDeltaA/nodeinfo*.
+multi-node/install/CopyrightDeltaB/drivers
+multi-node/install/CopyrightDeltaB/logs
+multi-node/install/CopyrightDeltaNotary/nodeinfo*.
+multi-node/install/CopyrightDeltaNotary/drivers
+multi-node/install/CopyrightDeltaNotary/logs
+multi-node/install/CopyrightDeltaNotary/nodeinfo*.
+
+nodeInfo-*
+

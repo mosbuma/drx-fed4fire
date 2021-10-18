@@ -1,0 +1,14 @@
+
+   ______               __
+  / ____/     _________/ /___ _
+ / /     __  / ___/ __  / __ `/         Whenever I go near my bank
+/ /___  /_/ / /  / /_/ / /_/ /          I get withdrawal symptoms 
+\____/     /_/   \__,_/\__,_/
+
+--- Corda Open Source 4.7 (75618ca) -------------------------------------------------------------
+
+
+Logs can be found in                    : /storage/jfed/exchange-backend/build/nodes/CopyrightDeltaB/logs
+[quasar] WARNING: Method not found in class - assuming suspendable: com/r3/corda/lib/tokens/testing/states/House#getValuation()Lnet/corda/core/contracts/Amount; (at TestFlows.kt:com/r3/corda/lib/tokens/workflows/internal/testflows/DvPFlow#call)
+Running database schema migration scripts ...
+Database migration scripts for core and app schemas complete. There are no outstanding database changes.
