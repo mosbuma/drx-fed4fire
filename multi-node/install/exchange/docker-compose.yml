@@ -6,7 +6,7 @@ services:
     container_name: exchange-backend-api
     image: openjdk:8
     ports:
-    - ":::8080:8080"
+    - "8080:8080"
     command: ["/drx-fed4fire/multi-node/install/exchange/exchange-backend/wait-for-nodes.sh"]
   exchange-frontend:
     container_name: exchange-frontend
