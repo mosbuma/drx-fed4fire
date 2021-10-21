@@ -9,12 +9,19 @@ services:
     - "8080:8080"
     command: ["/etc/exchange-backend/wait-for-nodes.sh"]
   exchange-frontend:
+    volumes:
+    - ./exchange-frontend/build:/usr/share/nginx/html:ro
     container_name: exchange-frontend
-    build:
-      context: ./exchange-frontend
-      dockerfile: Dockerfile
-    network_mode: host
+    image: nginx
+    # build:
+    #  context: ./exchange-frontend
+    #  dockerfile: Dockerfile
+    #network_mode: host
+    ports:
+    - 8081:80
     environment:
-    - "REACT_APP_ENV_NAME=jfedmulti"
+    - "REACT_APP_ENV_NAME=JFEDMULTI"
+    - "REACT_APP_API_URL_JFEDMULTI=http://localhost:8080/v1.0"
+    - "REACT_APP_HEALTH_URL_JFEDMULTI=http://localhost:8080/v1.0/health"
     depends_on:
     - "exchange-backend-api"
